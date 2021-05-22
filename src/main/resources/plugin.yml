@@ -1,0 +1,10 @@
+name: AdvancedWhitelist
+version: 1.0
+main: org.venterok.advancedwhitelist.AdvancedWhitelist
+api-version: 1.16
+authors: [ Venterok ]
+description: Better Minecraft Whitelist
+commands:
+  awhitelist:
+    description: AdvancedWhitelist Command add/remove/on/off/reload
+    permission: AdvancedWhitelist.admin
