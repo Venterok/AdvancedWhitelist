@@ -11,7 +11,7 @@ message:
   whitelist-reload: "&cAdvancedWhitelist был перезагружен"
   whitelist-already-on: "&cWhitelist Уже включён"
   whitelist-already-off: "&cWhitelist Уже выключён"
+  whitelist-size: "&cВ whitelist находится %whsize% игроков"
   dont-have-permission: "&cУ вас нету прав на использование данной команды"
 in-whitelist:
   - Venterok
-  - RuverQ

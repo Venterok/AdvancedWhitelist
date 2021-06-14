@@ -23,6 +23,7 @@ class WhitelistCommand() : CommandExecutor, TabCompleter {
              "on" -> WhitelistOn().whOn(sender)
              "off" -> WhitelistOff().whOff(sender)
              "reload" -> WhitelistReload().whReload(sender)
+             "size" -> WhitelistSize().WhSize(sender)
         }
         return true
     }
@@ -35,7 +36,7 @@ class WhitelistCommand() : CommandExecutor, TabCompleter {
     ): MutableList<String>? {
         if(args.size < 2){
             val list = mutableListOf<String>()
-            list.addAll(listOf("add", "remove", "on", "off", "reload"))
+            list.addAll(listOf("add", "remove", "on", "off", "reload", "size"))
             return list
         }
         return null
