@@ -4,6 +4,7 @@ Advanced whitelist plugin for spigot/paper 1.17
 ```yaml
 whitelist:
   enabled: true
+  
 message:
   join-no-whitelist: "&cВ данный момент вас нету в Whitelist"
   player-not-found: "&c%player% Не найден"
@@ -16,6 +17,7 @@ message:
   whitelist-already-on: "&cWhitelist Уже включён"
   whitelist-already-off: "&cWhitelist Уже выключён"
   dont-have-permission: "&cУ вас нету прав на использование данной команды"
+  
 in-whitelist:
   - Venterok
   - RuverQ
