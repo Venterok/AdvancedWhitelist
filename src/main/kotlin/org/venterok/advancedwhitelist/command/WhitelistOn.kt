@@ -1,12 +1,19 @@
-package org.venterok.advancedwhitelist
+package org.venterok.advancedwhitelist.command
 
 import org.bukkit.command.CommandSender
+import org.venterok.advancedwhitelist.AdvancedWhitelist
 
 class WhitelistOn {
     fun whOn (sender: CommandSender) {
-        val playerAlreadyWhitelisted = AdvancedWhitelist.inst?.config?.getBoolean("whitelist.enabled")
-        val whitelistAlreadyOn = AdvancedWhitelist.inst?.config?.getString("message.whitelist-already-on")
-        val whitelistOn = AdvancedWhitelist.inst?.config?.getString("message.whitelist-on")
+
+        val config = AdvancedWhitelist.inst?.config
+
+        val playerAlreadyWhitelisted = config?.getBoolean("whitelist.enabled")
+
+        val whitelistAlreadyOn = config?.getString("message.whitelist-already-on")
+
+        val whitelistOn = config?.getString("message.whitelist-on")
+
         if (playerAlreadyWhitelisted == true) {
             sender.sendMessage(AdvancedWhitelist.formatColor(whitelistAlreadyOn!!))
         }

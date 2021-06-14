@@ -1,14 +1,23 @@
-package org.venterok.advancedwhitelist
+package org.venterok.advancedwhitelist.command
 
 import org.bukkit.command.CommandSender
+import org.venterok.advancedwhitelist.AdvancedWhitelist
 
 class WhitelistRemove {
     fun PlayerRemove (player: String, sender: CommandSender) {
-        val whitelistedPlayers = AdvancedWhitelist.inst?.config?.getStringList("in-whitelist")
-        var playerNotFoundMessage = AdvancedWhitelist.inst?.config?.getString("message.player-not-found")
-        var playerRemoved = AdvancedWhitelist.inst?.config?.getString("message.whitelist-remove-player")
+
+        val config = AdvancedWhitelist.inst?.config
+
+        val whitelistedPlayers = config?.getStringList("in-whitelist")
+
+        var playerNotFoundMessage = config?.getString("message.player-not-found")
+
+        var playerRemoved = config?.getString("message.whitelist-remove-player")
+
         playerNotFoundMessage = playerNotFoundMessage.toString().replace("%player%", player, true)
+
         playerRemoved = playerRemoved.toString().replace("%player%", player, true)
+
         if (whitelistedPlayers != null) {
             if (whitelistedPlayers.contains(player)) {
                 sender.sendMessage(AdvancedWhitelist.formatColor(playerRemoved!!))
