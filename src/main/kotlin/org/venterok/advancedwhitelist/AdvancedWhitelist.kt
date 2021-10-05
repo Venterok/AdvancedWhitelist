@@ -3,14 +3,16 @@ package org.venterok.advancedwhitelist
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
+import org.venterok.advancedwhitelist.features.PlayerJoinCheck
+import org.venterok.advancedwhitelist.features.WhitelistCommand
 import java.io.File
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class AdvancedWhitelist : JavaPlugin() {
     override fun onEnable() {
-        Bukkit.getPluginManager().registerEvents(org.venterok.advancedwhitelist.PlayerJoinCheck(),this )
-        getCommand("awhitelist")!!.setExecutor(org.venterok.advancedwhitelist.WhitelistCommand())
+        Bukkit.getPluginManager().registerEvents(PlayerJoinCheck(),this )
+        getCommand("advwhitelist")!!.setExecutor(WhitelistCommand())
         configFile = setUpConfig()
         inst = this
         this.config.options().copyDefaults(true)
@@ -34,7 +36,7 @@ class AdvancedWhitelist : JavaPlugin() {
         }
         var inst: AdvancedWhitelist? = null
     }
-    private fun setUpConfig(): File? {
+    private fun setUpConfig(): File {
         val config = File(dataFolder.toString() + File.separator + "config.yml")
         if (!config.exists()) {
             logger.info("Creating config file...")
