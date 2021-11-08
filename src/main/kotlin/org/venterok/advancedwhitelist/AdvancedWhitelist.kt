@@ -5,21 +5,33 @@ import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.venterok.advancedwhitelist.features.PlayerJoinCheck
 import org.venterok.advancedwhitelist.features.WhitelistCommand
+import org.venterok.advancedwhitelist.utils.WhitelistManager
 import java.io.File
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class AdvancedWhitelist : JavaPlugin() {
+
+    private var storage: WhitelistManager? = null
+
     override fun onEnable() {
-        Bukkit.getPluginManager().registerEvents(PlayerJoinCheck(),this )
+
+        this.config.options().copyDefaults(true)
+        saveConfig()
+
+        this.storage = WhitelistManager(this)
+        Bukkit.getPluginManager().registerEvents(PlayerJoinCheck(this),this )
         getCommand("advwhitelist")!!.setExecutor(WhitelistCommand())
         configFile = setUpConfig()
         inst = this
-        this.config.options().copyDefaults(true)
+
+        println("&e[ADVANCEDWHITELIST] &r Loaded")
+
+
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
+        this.storage?.saveWhitelists()
     }
     companion object {
         var configFile : File? = null
@@ -44,5 +56,9 @@ class AdvancedWhitelist : JavaPlugin() {
             saveDefaultConfig()
         }
         return config
+    }
+
+    fun getStorage(): WhitelistManager? {
+        return storage
     }
 }

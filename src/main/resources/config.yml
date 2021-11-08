@@ -1,17 +1,24 @@
 whitelist:
   enabled: true
+
 message:
+  whitelist-action:
+    - "&c%player% Был успешно добавлен в Whitelist"
+    - "&c%player% Был успешно удалён из Whitelist"
+  player-check:
+    - "&c%player% находится в белом списке"
+    - "&c%player% не находится в белом списке"
+  whitelist-enabled:
+    - "&cWhitelist Был включён"
+    - "&cWhitelist Был выключён"
+
   join-no-whitelist: "&cВ данный момент вас нету в Whitelist"
   player-not-found: "&c%player% Не найден"
   player-already-whitelisted: "&c%player% Уже в белом списке"
-  whitelist-add-player: "&c%player% Был успешно добавлен в Whitelist"
-  whitelist-remove-player: "&c%player% Был успешно удалён из Whitelist"
-  whitelist-on: "&cWhitelist Был включён"
-  whitelist-off: "&cWhitelist Был выключён"
   whitelist-reload: "&cAdvancedWhitelist был перезагружен"
-  whitelist-already-on: "&cWhitelist Уже включён"
-  whitelist-already-off: "&cWhitelist Уже выключён"
   whitelist-size: "&cВ whitelist находится %whsize% игроков"
   dont-have-permission: "&cУ вас нету прав на использование данной команды"
+  command-error: "&Сломалось"
+
 in-whitelist:
   - Venterok

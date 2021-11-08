@@ -5,6 +5,6 @@ api-version: 1.17
 authors: [ Venterok ]
 description: Better Minecraft Whitelist
 commands:
-  awhitelist:
+  advwhitelist:
     description: AdvancedWhitelist Command add/remove/on/off/reload
     permission: AdvancedWhitelist.admin

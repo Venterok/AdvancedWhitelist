@@ -2,21 +2,25 @@ package org.venterok.advancedwhitelist.features
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent
-import org.venterok.advancedwhitelist.utils.Variables.Companion.config
+import org.bukkit.event.player.PlayerLoginEvent
+import org.venterok.advancedwhitelist.AdvancedWhitelist
 
-class PlayerJoinCheck : Listener {
+
+class PlayerJoinCheck(m: AdvancedWhitelist) : Listener {
+
+    private val st: AdvancedWhitelist
+
     @EventHandler
-    fun joinCheck (e: AsyncPlayerPreLoginEvent) {
+    fun onConnect(e: PlayerLoginEvent) {
+        val pl = e.player
 
-        if (!config.getBoolean("whitelist.enabled")) return
+        if (!st.getStorage()!!.whitelistEnabled()) return
+        if (st.getStorage()!!.isWhitelisted(pl.name)) return
 
-        val joinedPlayer = e.name
-        val whitelistedPlayers = config.getList("in-whitelist") ?: return
-        val noWhitelistMessage = config.getString("message.join-no-whitelist")!!
+        e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, st.getStorage()!!.noWhitelistMessage())
+    }
 
-        if (whitelistedPlayers.contains(joinedPlayer)) return
-        e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, noWhitelistMessage)
-
+    init {
+        this.st = m
     }
 }
