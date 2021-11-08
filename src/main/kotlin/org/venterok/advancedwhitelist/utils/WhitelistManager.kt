@@ -8,7 +8,7 @@ import org.venterok.advancedwhitelist.AdvancedWhitelist.Companion.formatColor
 class WhitelistManager(st: AdvancedWhitelist) {
 
     companion object {
-        val config = AdvancedWhitelist.inst?.config!!
+        val config = AdvancedWhitelist.inst!!.config
     }
 
     private val st: AdvancedWhitelist

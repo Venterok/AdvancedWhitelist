@@ -6,12 +6,13 @@ import org.bukkit.event.player.PlayerLoginEvent
 import org.venterok.advancedwhitelist.AdvancedWhitelist
 
 
-class PlayerJoinCheck(m: AdvancedWhitelist) : Listener {
+class PlayerJoinCheck(st: AdvancedWhitelist) : Listener {
 
-    private val st: AdvancedWhitelist
+    private var st: AdvancedWhitelist
 
     @EventHandler
     fun onConnect(e: PlayerLoginEvent) {
+
         val pl = e.player
 
         if (!st.getStorage()!!.whitelistEnabled()) return
@@ -21,6 +22,6 @@ class PlayerJoinCheck(m: AdvancedWhitelist) : Listener {
     }
 
     init {
-        this.st = m
+        this.st = st
     }
 }

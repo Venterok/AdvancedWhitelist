@@ -11,22 +11,18 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class AdvancedWhitelist : JavaPlugin() {
-
     private var storage: WhitelistManager? = null
 
     override fun onEnable() {
 
-        this.config.options().copyDefaults(true)
-        saveConfig()
-
-        this.storage = WhitelistManager(this)
-        Bukkit.getPluginManager().registerEvents(PlayerJoinCheck(this),this )
-        getCommand("advwhitelist")!!.setExecutor(WhitelistCommand())
-        configFile = setUpConfig()
         inst = this
+        config.options().copyDefaults(true)
+        saveConfig()
+        configFile = setUpConfig()
+        storage = WhitelistManager(this)
 
-        println("&e[ADVANCEDWHITELIST] &r Loaded")
-
+        Bukkit.getPluginManager().registerEvents(PlayerJoinCheck(this),this )
+        getCommand("advwhitelist")!!.setExecutor(WhitelistCommand(this))
 
     }
 
