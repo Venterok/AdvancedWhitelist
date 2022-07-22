@@ -19,6 +19,7 @@ class PlayerJoinCheck(st: AdvancedWhitelist) : Listener {
         if (st.getStorage()!!.isWhitelisted(pl.name)) return
 
         e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, st.getStorage()!!.noWhitelistMessage())
+
     }
 
     init {
