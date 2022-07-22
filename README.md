@@ -1,5 +1,5 @@
 # AdvancedWhitelist
-Advanced whitelist plugin for spigot/paper 1.17
+Advanced whitelist plugin for spigot/paper 1.19
 
 ```yaml
 whitelist:
