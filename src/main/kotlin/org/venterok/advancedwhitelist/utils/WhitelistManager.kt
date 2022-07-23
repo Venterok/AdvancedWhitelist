@@ -47,6 +47,9 @@ class WhitelistManager(st: AdvancedWhitelist) {
 
     fun removeWhitelist(name: String) {
         if (!whitelist.contains(name)) return
+        if (st.server.getPlayer(name) != null) {
+            st.server.getPlayer(name)?.kickPlayer("---")
+        }
         whitelist.remove(name)
         saveWhitelists()
     }
